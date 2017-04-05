@@ -1,6 +1,17 @@
 <?php 
 
-	require_once('functions.php'); 
+	require_once('functions.php');
+
+	if( isset($_POST['submit']) ) {
+		$theFruit = htmlentities($_POST['fruit']);
+		$theFruit = strtolower($theFruit);
+		
+		$fruit = makeFruit($theFruit);
+
+	} else {
+		$theFruit = '';
+    	$fruit = '';
+	}
 
 ?>
 
@@ -17,7 +28,7 @@
 		<form class="form-group" action="" method="post">
 			<label for=""></label>
 			<input class="form-control form-control-lg mr-sm-2" type="text" value="<?php echo ( $theFruit ? $theFruit : '' );?>" placeholder="Enter a fruit" name="fruit" id="fruit">
-			<button class="btn sr-only">Search</button>
+			<button class="btn sr-only" name="submit" type="submit">Search</button>
 		</form>
 		<?php 
 			if($fruit){
